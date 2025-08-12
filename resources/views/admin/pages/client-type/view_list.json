@@ -4,10 +4,19 @@
     "data": [
         {
             "fieldKey": "name",
-            "label": "Name",
+            "label": "Client Type",
             "relation": "",
             "config": {
                 "name": "name",
+                "value": "id"
+            }
+        },
+        {
+            "fieldKey": "code",
+            "label": "Client Type Code",
+            "relation": "",
+            "config": {
+                "name": "code",
                 "value": "id"
             }
         }
