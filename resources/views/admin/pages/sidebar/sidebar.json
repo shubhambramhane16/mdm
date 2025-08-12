@@ -1,0 +1,16 @@
+{
+    "module": "Navigation",
+    "type": "menu",
+    "data": [
+        {
+            "label": "Module Management",
+            "icon": "list",
+            "route": "module/list",
+            "sortOrder": "1",
+            "id": "module",
+            "slug": "module",
+            "is_left_menu": true,
+            "is_accordion": false
+        }
+    ]
+}

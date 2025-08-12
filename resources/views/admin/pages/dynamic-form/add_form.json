@@ -1,0 +1,381 @@
+{
+    "module": "dynamic-form",
+    "type": "form",
+    "formNameKey": "new-registration",
+    "data": [
+        {
+            "formName": "New User Registration",
+            "formId": 1,
+            "templateId": 1,
+            "submitButtonText": "Submit",
+            "formDescription": "Fill the registration form carefully.",
+            "formCssClass": "form-container",
+            "gridColumns": 12,
+            "fields": [
+                {
+                    "fieldKey": "full_name",
+                    "label": "Full Name",
+                    "type": "text",
+                    "column": 12,
+                    "placeholder": "Enter your name",
+                    "helpText": "Name should be in uppercase format",
+                    "tooltip": "Only capital letters allowed",
+                    "validation": {
+                        "regex": "^[A-Z ]+$",
+                        "minLength": 2,
+                        "maxLength": 50,
+                        "isRequired": true
+                    },
+                    "formatting": {
+                        "uppercase": true
+                    },
+                    "condition":{
+                        "fieldKey": "parent_id",
+                        "operator": "==",
+                        "value": "0"
+                    },
+                    "config": {
+                        "name": "name",
+                        "value": "id"
+                    },
+                    "functions": [
+                        {
+                            "event": "onChange",
+                            "action": {
+                                "functionName": "createModuleSlug",
+                                "params": [
+                                    {
+                                        "fieldKey": "module_title",
+                                        "targetFieldKey": "module_slug"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "fieldKey": "slug",
+                    "label": "Slug",
+                    "type": "text",
+                    "column": 12,
+                    "placeholder": "Enter your name",
+                    "helpText": "Name should be in uppercase format",
+                    "tooltip": "Only capital letters allowed",
+                    "validation": {
+                        "regex": "^[A-Z ]+$",
+                        "minLength": 2,
+                        "maxLength": 50,
+                        "isRequired": true
+                    },
+                    "formatting": {
+                        "uppercase": true
+                    }
+                },
+                {
+                    "fieldKey": "last_name",
+                    "label": "Last Name",
+                    "type": "text",
+                    "column": 12,
+                    "placeholder": "Enter your last name",
+                    "helpText": "Name should be in uppercase format",
+                    "tooltip": "Only capital letters allowed",
+                    "validation": {
+                        "regex": "^[A-Z ]+$",
+                        "minLength": 2,
+                        "maxLength": 50,
+                        "isRequired": true
+                    },
+                    "formatting": {
+                        "uppercase": true
+                    }
+                },
+                {
+                    "fieldKey": "email",
+                    "label": "Email Address",
+                    "type": "email",
+                    "column": 12,
+                    "placeholder": "you@example.com",
+                    "validation": {
+                        "regex": "^[\\w.-]+@[\\w.-]+\\.\\w{2,4}$",
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "password",
+                    "label": "Password",
+                    "type": "password",
+                    "column": 12,
+                    "placeholder": "Please enter password",
+                    "helpText": "Must include uppercase, lowercase, number",
+                    "validation": {
+                        "minLength": 8,
+                        "maxLength": 20,
+                        "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "amount",
+                    "label": "Amount",
+                    "type": "text",
+                    "column": 12,
+                    "placeholder": "Enter amount",
+                    "validation": {
+                        "min": 0,
+                        "max": 999999,
+                        "isRequired": true,
+                        "pattern": "^[0-9]+$"
+                    }
+                },
+                {
+                    "fieldKey": "birth_date",
+                    "label": "Birth Date",
+                    "type": "date",
+                    "column": 12,
+                    "placeholder": "Birth Date",
+                    "validation": {
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "meeting_time",
+                    "label": "Meeting Time",
+                    "type": "datetime",
+                    "column": 12,
+                    "placeholder": "Select date and time",
+                    "calendarType": "type_1",
+                    "validation": {
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "bio",
+                    "label": "Short Bio",
+                    "type": "textarea",
+                    "column": 12,
+                    "placeholder": "Tell us about yourself",
+                    "validation": {
+                        "maxLength": 500,
+                        "isRequired": false
+                    }
+                },
+                {
+                    "fieldKey": "profile_picture",
+                    "label": "Profile Picture",
+                    "type": "file",
+                    "column": 12,
+                    "validation": {
+                        "isRequired": false,
+                        "allowedTypes": ["jpg", "jpeg", "png"],
+                        "maxSizeMb": 5
+                    }
+                },
+                {
+                    "fieldKey": "gender",
+                    "label": "Gender",
+                    "type": "radio",
+                    "column": 12,
+                    "dataSourceType": "static",
+                    "dataSourceValue": ["Male", "Female", "Other"],
+                    "validation": {
+                        "isRequired": true
+                    },
+                    "conditionalVisibility": [
+                        {
+                            "value": "Other",
+                            "showFields": ["other_gender"]
+                        }
+                    ]
+                },
+                {
+                    "fieldKey": "other_gender",
+                    "label": "Please specify",
+                    "type": "text",
+                    "column": 12,
+                    "visibilityCondition": {
+                        "dependsOn": "gender",
+                        "operator": "==",
+                        "value": "Other"
+                    },
+                    "validation": {
+                        "minLength": 2,
+                        "maxLength": 50,
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "hobbies",
+                    "label": "Hobbies",
+                    "type": "checkbox_group",
+                    "column": 12,
+                    "dataSourceType": "static",
+                    "dataSourceValue": [
+                        "Reading",
+                        "Traveling",
+                        "Gaming",
+                        "Music"
+                    ],
+                    "validation": {
+                        "isRequired": true,
+                        "minSelected": 1,
+                        "maxSelected": 3
+                    }
+                },
+                {
+                    "fieldKey": "country_id",
+                    "label": "Country",
+                    "type": "dropdown",
+                    "column": 12,
+                    "dataSourceType": "master",
+                    "dataSource": "country",
+                    "isMultiple": false,
+                    "autocomplete": true,
+                    "config": {
+                        "name": "name",
+                        "value": "id"
+                    },
+                    "validation": {
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "state_id",
+                    "label": "State",
+                    "type": "dropdown",
+                    "column": 12,
+                    "dataSourceType": "master",
+                    "dataSource": "state",
+                    "relation": "country_id",
+                    "isMultiple": false,
+                    "autocomplete": true,
+                    "config": {
+                        "name": "name",
+                        "value": "id"
+                    },
+                    "validation": {
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "city_id",
+                    "label": "City",
+                    "type": "dropdown",
+                    "column": 12,
+                    "dataSourceType": "master",
+                    "dataSource": "city",
+                    "relation": "state_id",
+                    "isMultiple": false,
+                    "autocomplete": true,
+                    "config": {
+                        "name": "name",
+                        "value": "id"
+                    },
+                    "validation": {
+                        "isRequired": true
+                    }
+                },
+                {
+                    "fieldKey": "skills",
+                    "label": "Skills",
+                    "type": "dropdown",
+                    "column": 12,
+                    "dataSourceType": "static",
+                    "dataSourceValue": [
+                        "JavaScript",
+                        "React",
+                        "Node.js",
+                        "Python",
+                        "SQL"
+                    ],
+                    "isMultiple": true,
+                    "autocomplete": true,
+                    "placeholder": "Select your skills",
+                    "tooltip": "You can select up to 5 skills",
+                    "validation": {
+                        "isRequired": true,
+                        "minSelected": 1,
+                        "maxSelected": 5
+                    }
+                },
+                {
+                    "fieldKey": "experience_list",
+                    "label": "Work Experience",
+                    "type": "repeater",
+                    "column": 12,
+                    "repeaterGroup": "experience_list",
+                    "isRepeatable": true,
+                    "minRepeat": 1,
+                    "maxRepeat": 10,
+                    "addButtonText": "Add Experience",
+                    "removeButtonText": "Remove",
+                    "repeaterLabelField": "company_name",
+                    "defaultItems": 1,
+                    "validation": {
+                        "isRequired": true,
+                        "minRepeat": 1,
+                        "maxRepeat": 10
+                    },
+                    "fields": [
+                        {
+                            "fieldKey": "company_name",
+                            "label": "Company Name",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "Enter company name",
+                            "validation": {
+                                "minLength": 2,
+                                "maxLength": 100,
+                                "isRequired": true
+                            }
+                        },
+                        {
+                            "fieldKey": "position_title",
+                            "label": "Position",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "Enter job title",
+                            "validation": {
+                                "isRequired": true
+                            }
+                        },
+                        {
+                            "fieldKey": "duration_years",
+                            "label": "Years Worked",
+                            "type": "text",
+                            "column": 3,
+                            "validation": {
+                                "min": 0,
+                                "max": 50,
+                                "isRequired": true
+                            }
+                        },
+                        {
+                            "fieldKey": "location",
+                            "label": "Location",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "e.g., Delhi",
+                            "validation": {
+                                "minLength": 2,
+                                "maxLength": 100,
+                                "isRequired": true
+                            }
+                        },
+                        {
+                            "fieldKey": "village",
+                            "label": "Village",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "e.g., My Village",
+                            "validation": {
+                                "minLength": 2,
+                                "maxLength": 100,
+                                "isRequired": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

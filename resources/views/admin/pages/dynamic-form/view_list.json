@@ -1,0 +1,25 @@
+{
+  "module": "dynamic-form",
+  "data":[
+    {
+        "fieldKey": "module_title",
+        "label": "Module Title",
+        "relation": "",
+        "config": {
+            "name": "code",
+            "value": "id"
+        }
+
+    },
+    {
+        "fieldKey": "module_slug",
+        "label": "Module Slug",
+        "relation": "",
+        "config": {
+            "name": "code",
+            "value": "id"
+        }
+
+    }
+]
+}

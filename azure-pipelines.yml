@@ -1,0 +1,20 @@
+trigger:
+  - main
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'ssh'  
+    runOptions: 'inline'
+    
+    inline: |
+      set -e
+      echo "Pulling latest code from Git..."
+      cd /home/vv-project/htdocs/vv-project.abym.us
+      git pull origin main 2>&1 || true
+      echo "Git pull completed."
+    

@@ -1,0 +1,8 @@
+[
+    { "id": 1, "state": "Maharashtra", "country_id": 1 },
+    { "id": 2, "state": "Karnataka", "country_id": 1 },
+    { "id": 3, "state": "California", "country_id": 2 },
+    { "id": 4, "state": "Texas", "country_id": 2 },
+    { "id": 5, "state": "Ontario", "country_id": 3 },
+    { "id": 6, "state": "Quebec", "country_id": 3 }
+]
