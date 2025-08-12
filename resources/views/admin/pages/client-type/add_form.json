@@ -1,0 +1,78 @@
+{
+    "module": "Client Type",
+    "slug": "client-type",
+    "type": "form",
+    "formNameKey": "new-client-type",
+    "data": [
+        {
+            "formName": "New Client Type",
+            "formId": 1,
+            "templateId": 1,
+            "submitButtonText": "Submit",
+            "formDescription": "Fill the registration form carefully.",
+            "formCssClass": "form-container",
+            "gridColumns": 12,
+            "fields": [
+                {
+                    "fieldKey": "name",
+                    "label": "Client Type",
+                    "type": "text",
+                    "column": 6,
+                    "placeholder": "Enter client type",
+                    "helpText": "Client type should be in uppercase format",
+                    "tooltip": "Only capital letters allowed",
+                    "validation": {
+                        "regex": "^[A-Z ]+$",
+                        "minLength": 2,
+                        "maxLength": 50,
+                        "isRequired": true
+                    },
+                    "formatting": {
+                        "uppercase": true
+                    },
+                    "condition":{
+                        "fieldKey": "parent_id",
+                        "operator": "==",
+                        "value": "0"
+                    },
+                    "config": {
+                        "name": "name",
+                        "value": "id"
+                    },
+                    "functions": [
+                        {
+                            "event": "",
+                            "action": {
+                                "functionName": "",
+                                "params": [
+                                    {
+                                        "fieldKey": "",
+                                        "targetFieldKey": ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "fieldKey": "code",
+                    "label": "Code",
+                    "type": "text",
+                    "column": 6,
+                    "placeholder": "Enter code",
+                    "helpText": "Code should be in uppercase format",
+                    "tooltip": "Only capital letters allowed",
+                    "validation": {
+                        "regex": "^[A-Z0-9]+$",
+                        "minLength": 2,
+                        "maxLength": 10,
+                        "isRequired": true
+                    },
+                    "formatting": {
+                        "uppercase": true
+                    }
+                }
+            ]
+        }
+    ]
+}

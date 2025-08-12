@@ -273,10 +273,10 @@
 
                                     @else
                                     <a href="javascript:void(0)"
-                                        data-url="{{ url('/admin/' . $json['module'] . '/update-status/' . $value->id . '/' . $value->status) }}"
+                                        data-url="{{ url('/admin/' . $json['slug'] . '/update-status/' . $value->id . '/' . $value->status) }}"
                                         onclick="changeStatus(this)"> <span
                                             class="label label-lg font-weight-bold label-light-{{ $value->status == 1 ? 'success' : 'danger' }} label-inline">
-                                            @if ($json['module'] == 'expense')
+                                            @if ($json['slug'] == 'expense')
                                                 {{ $value->status == 1 ? 'Approve' : 'InApprove' }}
                                             @else
                                                 {{ $value->status == 1 ? 'Active' : 'InActive' }}
@@ -299,7 +299,7 @@
                                             <i class="la la-trash"></i>
                                         </a>
                                     @else
-                                        <a href="{{ url('/admin/' . $json['module'] . '/edit/' . $value->id) }}"
+                                        <a href="{{ url('/admin/' . $json['slug'] . '/edit/' . $value->id) }}"
                                             class="btn btn-sm btn-clean btn-icon" title="Edit details"
                                             data-toggle="tooltip">
                                             <i class="la la-edit"></i>

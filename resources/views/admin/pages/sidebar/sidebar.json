@@ -11,6 +11,17 @@
             "slug": "module",
             "is_left_menu": true,
             "is_accordion": false
+        },
+        {
+            "label": "Client Type",
+            "icon": "list",
+            "route": "client-type/list",
+            "sortOrder": 10,
+            "id": "client-type",
+            "slug": "client-type",
+            "is_left_menu": true,
+            "is_accordion": false,
+            "children": []
         }
     ]
 }

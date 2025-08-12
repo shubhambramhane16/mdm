@@ -1,0 +1,15 @@
+{
+    "module": "Client Type",
+    "slug": "client-type",
+    "data": [
+        {
+            "fieldKey": "name",
+            "label": "Name",
+            "relation": "",
+            "config": {
+                "name": "name",
+                "value": "id"
+            }
+        }
+    ]
+}
