@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('code')->nullable();
+            $table->text('discount_rates')->nullable();
+            $table->text('remarks')->nullable();
             $table->boolean('status')->default(true);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

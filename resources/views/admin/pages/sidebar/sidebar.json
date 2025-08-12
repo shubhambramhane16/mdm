@@ -16,7 +16,7 @@
             "label": "Client Type",
             "icon": "list",
             "route": "client-type/list",
-            "sortOrder": 10,
+            "sortOrder": "2",
             "id": "client-type",
             "slug": "client-type",
             "is_left_menu": true,

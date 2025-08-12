@@ -12,9 +12,11 @@ class ClientType extends Model
         'name',
         'code',
         'status',
+        'discount_rates',
+        'remarks',
         'created_by',
         'updated_by',
     ];
 
-    
+
 }

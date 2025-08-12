@@ -67,6 +67,8 @@ class ClientTypeController extends Controller
                 $array = [
                     'name' => strtoupper($request->name),
                     'code' => strtoupper($request->code),
+                    'discount_rates' => $request->discount_rates ? json_encode($request->discount_rates) : null,
+                    'remarks' => $request->remarks ? $request->remarks : null,
                     'status' => $request->status ? 1 : 0,
                     'created_by' => auth()->user()->id,
                 ];
@@ -109,6 +111,48 @@ class ClientTypeController extends Controller
 
             if ($request->isMethod('post')) {
                 // Handle form submission logic here
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required|string|max:255',
+                    'code' => 'required|string|max:255',
+                ],
+                [
+                    'name.required' => 'Client Type is required.',
+                    'code.required' => 'Code is required.',
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                DB::beginTransaction();
+
+                $array = [
+                    'name' => strtoupper($request->name),
+                    'code' => strtoupper($request->code),
+                    'discount_rates' => $request->discount_rates ? json_encode($request->discount_rates) : null,
+                    'remarks' => $request->remarks ? $request->remarks : null,
+                    'status' => $request->status ? 1 : 0,
+                    'updated_by' => auth()->user()->id,
+                ];
+
+                // check if client type already exists
+                $existingClientType = ClientType::where(function ($query) use ($request, $id) {
+                    $query->where('name', strtoupper($request->name))
+                        ->orWhere('code', strtoupper($request->code));
+                })->where('id', '!=', $id)->first();
+
+                if ($existingClientType) {
+                    return redirect()->back()->withErrors(['Client Type or Code already exists.'])->withInput();
+                }
+
+                $clientType = ClientType::find($id);
+                if ($clientType) {
+                    $clientType->update($array);
+                    DB::commit();
+                    return redirect('admin/client-type/list')->with('success', 'ClientType updated successfully.');
+                } else {
+                    return redirect()->back()->withErrors(['ClientType details not found.']);
+                }
             }
 
             $details = ClientType::where('id', $id)->first();

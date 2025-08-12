@@ -71,6 +71,60 @@
                     "formatting": {
                         "uppercase": true
                     }
+                },
+                {
+                    "fieldKey": "discount_rates",
+                    "label": "Discount Rates",
+                    "type": "repeater",
+                    "column": 12,
+                    "repeaterGroup": "discount_rates",
+                    "isRepeatable": true,
+                    "minRepeat": 1,
+                    "maxRepeat": 10,
+                    "addButtonText": "Add Discount Rate",
+                    "removeButtonText": "Remove",
+                    "repeaterLabelField": "company_name",
+                    "defaultItems": 1,
+                    "validation": {
+                        "isRequired": true,
+                        "minRepeat": 1,
+                        "maxRepeat": 10
+                    },
+                    "fields": [
+                        {
+                            "fieldKey": "category",
+                            "label": "Category",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "Enter category",
+                            "validation": {
+                                "minLength": 2,
+                                "maxLength": 100,
+                                "isRequired": false
+                            }
+                        },
+                        {
+                            "fieldKey": "rate",
+                            "label": "Rate",
+                            "type": "text",
+                            "column": 3,
+                            "placeholder": "Enter rate",
+                            "validation": {
+                                "isRequired": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "fieldKey": "remarks",
+                    "label": "Remarks",
+                    "type": "textarea",
+                    "column": 12,
+                    "placeholder": "Enter any remarks",
+                    "validation": {
+                        "maxLength": 500,
+                        "isRequired": false
+                    }
                 }
             ]
         }
