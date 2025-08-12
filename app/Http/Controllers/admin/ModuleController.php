@@ -417,7 +417,7 @@ class ModuleController extends Controller
                     file_put_contents($sidebarPath, json_encode($sidebarData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
                     // Remove the module's directory
-                    $modulePath = app_path('Modules/' . $cat->slug);
+                    $modulePath = app_path('Modules/' . $cat->class_name);
                     if (is_dir($modulePath)) {
                         $files = glob($modulePath . '/*');
                         foreach ($files as $file) {
@@ -431,13 +431,13 @@ class ModuleController extends Controller
                     }
 
                     // Remove the module's controller
-                    $controllerPath = app_path('Http/Controllers/Admin/' . $cat->name . 'Controller.php');
+                    $controllerPath = app_path('Http/Controllers/Admin/' . $cat->class_name . 'Controller.php');
                     if (file_exists($controllerPath)) {
                         unlink($controllerPath);
                     }
 
                     // Remove the module's model
-                    $modelPath = app_path('Models/' . $cat->name . '.php');
+                    $modelPath = app_path('Models/' . $cat->class_name . '.php');
                     if (file_exists($modelPath)) {
                         unlink($modelPath);
                     }
@@ -451,7 +451,7 @@ class ModuleController extends Controller
                     }
 
                     // Remove the module's views
-                    $viewsPath = resource_path('views/admin/pages/' . Str::slug($cat->name));
+                    $viewsPath = resource_path('views/admin/pages/' . $cat->slug);
                     if (is_dir($viewsPath)) {
                         $files = glob($viewsPath . '/*');
                         foreach ($files as $file) {
@@ -465,7 +465,7 @@ class ModuleController extends Controller
                     }
 
                     // Remove the module's routes from the modules folder
-                    $routesPath = base_path('routes/modules/' . Str::slug($cat->name) . '.php');
+                    $routesPath = base_path('routes/modules/' . $cat->class_name . '.php');
                     if (file_exists($routesPath)) {
                         unlink($routesPath);
                     }
