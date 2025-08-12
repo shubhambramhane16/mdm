@@ -1,3 +1,9 @@
+/* get from the other file */
+
+:root {
+    --left-nav-bar : #0e4c83;
+}
+
 .aside {
   background-color: #fff;
 }
@@ -77,7 +83,7 @@
 }
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link {
-  background-color: #0e4c83;
+  background-color: var(--left-nav-bar);
   /* border-radius: 8px; */
   /* box-shadow: inset 0px 5px 9px #34333378; */
   margin-bottom: 5px;
@@ -191,7 +197,7 @@
 }
 .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading,
 .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
-  background-color: #0e4c83;
+  background-color: var(--left-nav-bar);
   /* border-radius: 8px;
   box-shadow: inset 0px 5px 9px #34333378; */
 }
@@ -374,7 +380,7 @@
 }
 .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading,
 .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
-  background-color: #0e4c83;
+  background-color: var(--left-nav-bar)
   /* border-radius: 8px;
   box-shadow: inset 0px 5px 9px #34333378; */
 }
